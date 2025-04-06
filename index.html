@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foxy Farm Market - North Vancouver's Local Food Market</title>
+    <style>
+        /* Basic Reset & Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #4a8f29;
+        }
+        
+        .logo span {
+            color: #e67e22;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #e67e22;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #e67e22;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #d35400;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: #f9f9f9;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: #4a8f29;
+            margin-bottom: 15px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            color: #e67e22;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: #4a8f29;
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 80px 0;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            border: 1px solid #eee;
+            border-radius: 5px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-img img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            margin-bottom: 10px;
+            color: #4a8f29;
+        }
+        
+        .product-price {
+            font-weight: 700;
+            color: #e67e22;
+            margin-bottom: 15px;
+        }
+        
+        /* Newsletter Section */
+        .newsletter {
+            padding: 60px 0;
+            background: #4a8f29;
+            color: white;
+            text-align: center;
+        }
+        
+        .newsletter h2 {
+            margin-bottom: 20px;
+        }
+        
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+        }
+        
+        .newsletter-form button {
+            background: #e67e22;
+            color: white;
+            border: none;
+            padding: 0 25px;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            margin-bottom: 20px;
+            color: #e67e22;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: #e67e22;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 20px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #aaa;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                border-radius: 30px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-form button {
+                border-radius: 30px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">Foxy <span>Farm</span> Market</div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Weekly Specials</a></li>
+                    <li><a href="#">Recipes</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Fresh. Local. Sustainable.</h1>
+            <p>North Vancouver's premier destination for farm-fresh produce, local meats, and artisanal goods since 2005.</p>
+            <a href="#" class="btn">Shop Our Weekly Specials</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Foxy Farm Market?</h2>
+                <p>We're committed to bringing you the best local products</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🌱</div>
+                    <h3>Locally Sourced</h3>
+                    <p>Over 80% of our products come from farms within 100km of North Vancouver.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧑‍🌾</div>
+                    <h3>Farm Direct</h3>
+                    <p>We work directly with farmers to bring you the freshest seasonal produce.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌿</div>
+                    <h3>Sustainable</h3>
+                    <p>Eco-friendly packaging and responsible farming practices.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🍎</div>
+                    <h3>Organic Options</h3>
+                    <p>Wide selection of certified organic fruits, vegetables, and pantry staples.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>This Week's Fresh Picks</h2>
+                <p>New arrivals and seasonal favorites</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Fresh Apples">
+                    </div>
+                    <div class="product-info">
+                        <h3>BC Gala Apples</h3>
+                        <p class="product-price">$3.99/lb</p>
+                        <p>Sweet and crisp, grown in the Okanagan Valley.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1603048719539-4cf8c1a81a32?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Organic Carrots">
+                    </div>
+                    <div class="product-info">
+                        <h3>Organic Carrots</h3>
+                        <p class="product-price">$2.49/bunch</p>
+                        <p>Locally grown, packed with flavor and nutrients.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Farm Fresh Eggs">
+                    </div>
+                    <div class="product-info">
+                        <h3>Free-Range Eggs</h3>
+                        <p class="product-price">$6.99/dozen</p>
+                        <p>From happy hens at Fraser Valley farms.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Artisan Bread">
+                    </div>
+                    <div class="product-info">
+                        <h3>Sourdough Bread</h3>
+                        <p class="product-price">$7.50/loaf</p>
+                        <p>Handcrafted by local bakers using traditional methods.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Join Our Community</h2>
+            <p>Sign up for our newsletter to receive weekly specials, recipes, and farm updates.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Foxy Farm Market</h3>
+                    <p>Providing North Vancouver with fresh, local, and sustainable food since 2005.</p>
+                    <div class="social-links">
+                        <a href="#">FB</a>
+                        <a href="#">IG</a>
+                        <a href="#">TW</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Products</a></li>
+                        <li><a href="#">Weekly Specials</a></li>
+                        <li><a href="#">Recipes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Information</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Delivery Information</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p>123 Lonsdale Avenue<br>North Vancouver, BC V7M 2E6</p>
+                    <p>Phone: (604) 555-1234</p>
+                    <p>Email: info@foxyfarmmarket.ca</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Foxy Farm Market. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
